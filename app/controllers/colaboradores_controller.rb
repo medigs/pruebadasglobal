@@ -18,7 +18,7 @@ class ColaboradoresController < ApplicationController
         @colaborador = Colaborador.new(colaborador_params)
         @colaborador.sucursal_id = params[:sucursal_id]
         if @colaborador.save
-            redirect_to colaboradores_path
+            redirect_to empresa_sucursal_colaboradores_path
         else
             render :new
         end
@@ -27,7 +27,7 @@ class ColaboradoresController < ApplicationController
     def update
         @colaborador = Colaborador.find(params[:id])
         if @colaborador.update(colaborador_params)
-            redirect_to colaboradores_path
+            redirect_to empresa_sucursal_colaboradores_path
         else
             render :edit
         end

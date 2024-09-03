@@ -15,14 +15,14 @@
               <h5 class="card-title">Listado de Colaboradores</h5>
             </div>
             <div class="col-lg-4 float-right">
-              <%= link_to "<i class='bi bi-bookmark-plus-fill'></i>Nuevo registro".html_safe, new_empresa_sucursal_colaborador_path(@sucursal.empresa_id,@sucursal.id), class: "text-success", data: { turbolinks: false }  %>
+              <%= link_to "<i class='bi bi-bookmark-plus-fill'></i> Nuevo registro".html_safe, new_empresa_sucursal_colaborador_path(@sucursal.empresa_id, @sucursal.id), class: "text-success", data: { turbolinks: false }  %>
             </div>
           </div>
           <table class="table datatable" id="empresa_table" data-controller="datatable" data-turbolinks="false" class="paginacion">
             <thead>
               <tr>
                 <th scope="col">Nombre</th>
-                <th scope="col">Pais</th>
+                <th scope="col">Cui</th>
                 <th scope="col">Acciones</th>
               </tr>
             </thead>
@@ -31,19 +31,25 @@
                 <tr>
                   <td><%= colaborador.nombre %></td>
                   <td><%= colaborador.cui %></td>
-                  
                   <td>
                     <a href="/empresas/<%= colaborador.sucursal.empresa_id %>/sucursales/<%= colaborador.sucursal_id %>/colaboradores/<%= colaborador.id %>/edit" class="btn btn-warning btn-circle btn-sm" data-toggle="tooltip" data-placement="top" title="Editar">
                       <i class="bi bi-pencil-fill"></i>
+                    </a>
+
+                    <a href="/empresas/<%= colaborador.sucursal.empresa_id %>/sucursales/<%= colaborador.sucursal_id %>/colaboradores/<%= colaborador.id %>" class="btn btn-danger btn-circle btn-sm" data-method="delete" data-confirm="¿Estás seguro?" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                      <i class="bi bi-trash-fill"></i>
                     </a>
                   </td>
                 </tr>
               <% end %>
             </tbody>
           </table>
-          <a href="/sucursales/<%= params['sucursal_id'] %>" class="btn btn-info " data-toggle="tooltip" data-placement="top" title="Regreasar">
-               <i class="bi bi-skip-backward"></i> Regresar a Sucursales
-            </a>
+          <!-- Mover el botón fuera de la tabla -->
+          <div class="mt-3">
+            <%= link_to "/empresas/#{@sucursal.empresa_id}/sucursales", class: "btn btn-info", data: { toggle: "tooltip", placement: "top" }, title: "Regresar" do %>
+              <i class="bi bi-skip-backward"></i> Regresar a Sucursales
+            <% end %>
+          </div>
         </div>
       </div><!-- End Default Card -->
     </div>

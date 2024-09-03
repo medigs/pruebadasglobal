@@ -44,6 +44,9 @@
                     <a href="/empresas/<%= sucursal.empresa_id %>/sucursales/<%= sucursal.id %>/edit" data-toggle="tooltip" data-placement="top" title="Editar">
                       <i class="bi bi-pencil-fill"></i>
                     </a>
+                      <a href="/empresas/<%= sucursal.empresa_id %>/sucursales/<%= sucursal.id %>" data-method="delete" data-confirm="¿Estás seguro?" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                        <i class="bi bi-trash-fill"></i>
+                      </a>
                   </td>
 
                 </tr>
