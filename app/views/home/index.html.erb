@@ -1,11 +1,18 @@
-<h1>Carga de archivos</h1>
+<h1>Carga de archivo</h1>
 
 <hr>
 <br>
 <div class="row">
-    <div class="form-actions">
+    <div class="col-12">
         <div class="d-grid gap-2 mt-3">
-            <a href="/consultas/new" class="btn btn-success">Nueva</a>
+            <%= form_with url: carga_json_path, local: true, html: { enctype: 'multipart/form-data' } do |form| %>
+                <div class="form-group">
+                    <%= form.label :archivo, "Seleccionar archivo JSON" %>
+                    <%= form.file_field :archivo, accept: '.json', class: 'form-control' %>
+                </div>
+                <br>
+                <%= form.submit "Cargar JSON", class: 'btn btn-success w-100' %>
+            <% end %>
         </div>
     </div>
 </div>

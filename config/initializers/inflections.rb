@@ -14,3 +14,10 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym "RESTful"
 # end
+
+ActiveSupport::Inflector.inflections(:es) do |inflect|
+    inflect.irregular 'colaborador', 'colaboradores'
+    inflect.irregular 'sucursal', 'sucursales'
+    end
+# Load the Rails application.
+
