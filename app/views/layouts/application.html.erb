@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prueba DAS GLOBAL</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
+
+    <%# <%= javascript_include_tag 'jquery', 'dataTables/jquery.dataTables' %>
+    <%# <%= stylesheet_link_tag 'dataTables/jquery.dataTables' %> 
+  </head>
+
+  <body> 
+   
+      <%= render 'layouts/sidebar', layout: "two_column_landing" %>
+
+      <%= render 'layouts/aside', layout: "two_column_landing" %>
+      <main id="main" class="main">
+        <% flash.each do |type, msg| %>
+          <% if type == "notice" %>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <% elsif type == "alert" %>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <% else %>
+            <div class= 'alert alert-<%= "#{type}" %> alert-dismissible fade show' role="alert">
+          <% end %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          <%= msg %>
+          </div>
+        <% end %>
+        <%= yield %>
+      </main>
+   
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Carlos Medina</span></strong> Todos los derechos reservados
+      </div>
+    </footer><!-- End Footer -->
+  </body>
+</html>
