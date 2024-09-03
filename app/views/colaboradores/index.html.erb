@@ -1,0 +1,53 @@
+<p style="color: green"><%= notice %></p>
+<div class="pagetitle">
+  <h1>Colaboradores</h1>
+</div><!-- End Page Title -->
+<hr>
+<section class="section">
+  <div class="row align-items-top">
+    <div class="col-lg-12">
+
+      <!-- Default Card -->
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-8">
+              <h5 class="card-title">Listado de Colaboradores</h5>
+            </div>
+            <div class="col-lg-4 float-right">
+              <%= link_to "<i class='bi bi-bookmark-plus-fill'></i>Nuevo registro".html_safe, root_path, class: "text-success", data: { turbolinks: false }  %>
+            </div>
+          </div>
+          <table class="table datatable" id="empresa_table" data-controller="datatable" data-turbolinks="false" class="paginacion">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Pais</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @colaboradores.each do |colaborador| %>
+                <tr>
+                  <td><%= colaborador.nombre %></td>
+                  <td><%= colaborador.cui %></td>
+                  
+                  <td>
+                    <a href="<%= editar_colaborador_path(colaborador) %>" class="btn btn-warning btn-circle btn-sm" data-toggle="tooltip" data-placement="top" title="Editar">
+                      <i class="bi bi-pencil-fill"></i>
+                    </a>
+
+                  </td>
+
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <a href="/sucursales/<%= params['sucursal_id'] %>" class="btn btn-info " data-toggle="tooltip" data-placement="top" title="Regreasar">
+               <i class="bi bi-skip-backward"></i> Regresar a Sucursales
+            </a>
+        </div>
+      </div><!-- End Default Card -->
+    </div>
+  </div>
+</section>
