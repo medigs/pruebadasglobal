@@ -15,7 +15,7 @@
               <h5 class="card-title">Listado de Empresas</h5>
             </div>
             <div class="col-lg-4 float-right">
-              <%= link_to "<i class='bi bi-bookmark-plus-fill'></i>Nuevo registro".html_safe, root_path, class: "text-success", data: { turbolinks: false }  %>
+              <%= link_to "<i class='bi bi-bookmark-plus-fill'></i>Nuevo registro".html_safe, new_empresa_path, class: "text-success", data: { turbolinks: false }  %>
             </div>
           </div>
           <table class="table datatable" id="empresa_table" data-controller="datatable" data-turbolinks="false" class="paginacion">
@@ -24,6 +24,7 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Pais</th>
                 <th scope="col">Sucursales</th>
+                <th scope="col">Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -33,8 +34,13 @@
                   <td><%= empresa.pais %></td>
                   
                   <td>
-                    <a href="/sucursales/<%= empresa.id %>" class="btn btn-primary btn-circle btn-sm" data-toggle="tooltip" data-placement="top" title="Mostrar">
-                        <i class="bi bi-eye-fill text-white"></i> Ver
+                    <a href="/empresas/<%= empresa.id %>/sucursales" class="btn btn-primary btn-circle btn-sm" data-toggle="tooltip" data-placement="top" title="Mostrar">
+                        <i class="bi bi-eye-fill text-white"></i> 
+                    </a>
+                  </td>
+                  <td>
+                    <a href="/empresas/<%= empresa.id %>/edit" class="btn btn-warning btn-circle btn-sm" data-toggle="tooltip" data-placement="top" title="Editar">
+                      <i class="bi bi-pencil-fill"></i>
                     </a>
                   </td>
 
